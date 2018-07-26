@@ -179,7 +179,6 @@ Type Trie<Type>::data(std::string word){
             throw unknow_word_error();
         }
     }
-    //bugs here
     return (*node)->data;
 }
 
