@@ -27,8 +27,8 @@ struct TrieNode{
     TrieNode(TrieNode &&);
     ~TrieNode();
     
-    TrieNode<Type>& operator=(const TrieNode<Type> &);
-    TrieNode<Type>& operator=(TrieNode<Type> &&);
+    TrieNode& operator=(const TrieNode<Type> &);
+    TrieNode& operator=(TrieNode<Type> &&);
     
     unsigned int counter;
     Type data;
@@ -43,8 +43,8 @@ class Trie{
         Trie(Trie &&);
         ~Trie();
         
-        //Trie &operator=(const Trie &);
-        //Trie &operator=(Trie &&);
+        Trie &operator=(const Trie &);
+        Trie &operator=(Trie &&);
         
         void add_word(std::string word,Type data);
         Type data(std::string word);
@@ -123,6 +123,18 @@ Trie<Type>::Trie(Trie<Type> &&trie)
 
 template<class Type>
 Trie<Type>::~Trie() = default;
+
+template<class Type>
+Trie<Type> &Trie<Type>::operator=(const Trie &trie){
+    m_root = trie.m_root;
+    return *this;
+}
+
+template<class Type>
+Trie<Type> &Trie<Type>::operator=(Trie &&trie){
+    m_root = std::move(trie.m_root);
+    return *this;
+}
 
 template<class Type>
 void Trie<Type>::add_word(std::string word,Type data){
