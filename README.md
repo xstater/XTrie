@@ -2,7 +2,8 @@
 Trie
 
 ## Trie
-    trie::Trie<Type> which Type is the additional data.
+    namespace trie
+    Trie<Type> which Type is the additional data.
 
 ### functions
 ```
